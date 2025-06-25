@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-const SENSITIVITY = 0.001
+const SENSITIVITY = 1.36
+const SOURCE_ENGINE_SENS_MULTIPLIER =  0.00038397243458548043006658879114174
 
 @onready var camera = $CameraController/Camera3D
 
@@ -9,6 +10,6 @@ func _ready():
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * SENSITIVITY)
-		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		rotate_y(-event.relative.x * SENSITIVITY * SOURCE_ENGINE_SENS_MULTIPLIER)
+		camera.rotate_x(-event.relative.y * SENSITIVITY * SOURCE_ENGINE_SENS_MULTIPLIER)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)

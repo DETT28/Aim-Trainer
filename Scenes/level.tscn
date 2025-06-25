@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://hb68gikpw658"]
+[gd_scene load_steps=10 format=3 uid="uid://dwqafnw6gfo42"]
 
-[ext_resource type="Texture2D" uid="uid://blff5kok1bpxt" path="res://Assets/PNG/Dark/texture_02.png" id="1_tumq0"]
-[ext_resource type="PackedScene" uid="uid://dnks0rhvm03xe" path="res://Scenes/player.tscn" id="2_k5f4k"]
+[ext_resource type="Texture2D" uid="uid://blff5kok1bpxt" path="res://Assets/Surface Textures/Dark/texture_02.png" id="1_2aeho"]
+[ext_resource type="PackedScene" uid="uid://ct0c01lqr7s8g" path="res://Scenes/player.tscn" id="2_83dl5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -20,7 +20,7 @@ glow_enabled = true
 size = Vector2(10, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5f4k"]
-albedo_texture = ExtResource("1_tumq0")
+albedo_texture = ExtResource("1_2aeho")
 uv1_triplanar = true
 uv1_world_triplanar = true
 uv2_triplanar = true
@@ -32,7 +32,7 @@ size = Vector2(10, 4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tumq0"]
 albedo_color = Color(1, 1, 1, 0)
-albedo_texture = ExtResource("1_tumq0")
+albedo_texture = ExtResource("1_2aeho")
 uv1_triplanar = true
 uv1_world_triplanar = true
 uv2_triplanar = true
@@ -42,11 +42,6 @@ uv2_world_triplanar = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_noarx")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-visible = false
-shadow_enabled = true
 
 [node name="floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_5xgho")
@@ -77,5 +72,5 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 mesh = SubResource("PlaneMesh_6phgx")
 surface_material_override/0 = SubResource("StandardMaterial3D_tumq0")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("2_k5f4k")]
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_83dl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10843, 0.552222)

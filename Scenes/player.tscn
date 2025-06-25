@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnks0rhvm03xe"]
+[gd_scene load_steps=8 format=3 uid="uid://ct0c01lqr7s8g"]
 
-[ext_resource type="Script" uid="uid://c6esu4qp7tvto" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://c6esu4qp7tvto" path="res://Scripts/player.gd" id="1_7cdx0"]
+[ext_resource type="Script" uid="uid://cu0w3afp7y8qd" path="res://Scripts/reticle.gd" id="2_cvnsp"]
+[ext_resource type="Theme" uid="uid://bxngqa0thlhww" path="res://themes/debug.tres" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://7dr0t0p2bjuh" path="res://Scripts/debug.gd" id="4_vgqql"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
 radius = 0.25
@@ -14,7 +17,7 @@ height = 1.0
 albedo_color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
-script = ExtResource("1_v0iea")
+script = ExtResource("1_7cdx0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_f60y1")
@@ -27,3 +30,61 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f60y1")
 
 [node name="Camera3D" type="Camera3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+fov = 74.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController"]
+visible = false
+update_mode = 1
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="reticle" type="CenterContainer" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_cvnsp")
+
+[node name="Top" type="Line2D" parent="UserInterface/reticle"]
+points = PackedVector2Array(0, -5, 0, -15)
+width = 2.0
+
+[node name="Right" type="Line2D" parent="UserInterface/reticle"]
+points = PackedVector2Array(5, 0, 15, 0)
+width = 2.0
+
+[node name="Bottom" type="Line2D" parent="UserInterface/reticle"]
+points = PackedVector2Array(0, 5, 0, 15)
+width = 2.0
+
+[node name="Left" type="Line2D" parent="UserInterface/reticle"]
+points = PackedVector2Array(-5, 0, -15, 0)
+width = 2.0
+
+[node name="DebugPanel" type="PanelContainer" parent="UserInterface"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 50.0
+theme = ExtResource("3_6t5aa")
+script = ExtResource("4_vgqql")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterface/DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
