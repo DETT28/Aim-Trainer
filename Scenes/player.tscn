@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ct0c01lqr7s8g"]
+[gd_scene load_steps=5 format=3 uid="uid://ct0c01lqr7s8g"]
 
 [ext_resource type="Script" uid="uid://c6esu4qp7tvto" path="res://Scripts/Client/player.gd" id="1_7cdx0"]
-[ext_resource type="Script" uid="uid://cu0w3afp7y8qd" path="res://Scripts/Client/HUD UI/reticle.gd" id="2_cvnsp"]
-[ext_resource type="Script" uid="uid://7dr0t0p2bjuh" path="res://Scripts/Client/HUD UI/debug.gd" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://dte3bc3hci3gq" path="res://Addons/customizable-crosshair-lite/crosshair.gd" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://chluximukqwir" path="res://Scripts/Client/HUD/fps_counter.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://cf7rokmo4pmcv" path="res://Scripts/Client/HUD/player_stats.gd" id="4_vgqql"]
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_7cdx0")
@@ -17,10 +18,6 @@ fov = 74.0
 [node name="AimCast" type="RayCast3D" parent="CameraController/Camera3D"]
 target_position = Vector3(0, 0, -1000)
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController"]
-visible = false
-update_mode = 1
-
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -28,9 +25,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 mouse_filter = 1
 
-[node name="reticle" type="CenterContainer" parent="UserInterface"]
+[node name="FPScounter" type="Control" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_6t5aa")
+
+[node name="Label" type="Label" parent="UserInterface/FPScounter"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 96.0
+offset_bottom = 33.0
+
+[node name="Crosshair" type="Control" parent="UserInterface"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,36 +51,34 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_cvnsp")
+mouse_filter = 1
+script = ExtResource("2_6t5aa")
+crosshairThickness = 2.0
+crosshairSize = 6.0
+crosshairGap = 3.0
+crosshairColor = Color(0.462745, 0.72549, 0, 1)
+crosshairOutline = true
+crosshairOutlineThickness = 1.0
 
-[node name="Top" type="Line2D" parent="UserInterface/reticle"]
-points = PackedVector2Array(0, -5, 0, -15)
-width = 2.0
-
-[node name="Right" type="Line2D" parent="UserInterface/reticle"]
-points = PackedVector2Array(5, 0, 15, 0)
-width = 2.0
-
-[node name="Bottom" type="Line2D" parent="UserInterface/reticle"]
-points = PackedVector2Array(0, 5, 0, 15)
-width = 2.0
-
-[node name="Left" type="Line2D" parent="UserInterface/reticle"]
-points = PackedVector2Array(-5, 0, -15, 0)
-width = 2.0
-
-[node name="DebugPanel" type="PanelContainer" parent="UserInterface"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 210.0
-offset_bottom = 50.0
+[node name="PlayerStats" type="CenterContainer" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 480.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_vgqql")
 
-[node name="MarginContainer" type="MarginContainer" parent="UserInterface/DebugPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/PlayerStats"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugPanel/MarginContainer"]
-unique_name_in_owner = true
+[node name="Score" type="Label" parent="UserInterface/PlayerStats/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+text = "Score"
+
+[node name="Accuracy" type="Label" parent="UserInterface/PlayerStats/HBoxContainer"]
+layout_mode = 2
+text = "ACC: 80"

@@ -4,17 +4,22 @@ const SENSITIVITY = 2.0
 const SOURCE_ENGINE_SENS_MULTIPLIER =  0.00038397243458548043006658879114174
 
 var damage = 150
+var shotsTaken = 0
+var shotsHit = 0
 
 @onready var camera = $CameraController/Camera3D
 @onready var aimcast = $CameraController/Camera3D/AimCast
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("fire"):
+		shotsTaken += 1
 		if aimcast.is_colliding():
 			var target = aimcast.get_collider()
 			if target.is_in_group("Enemy"): 
 				print("hit target")
 				target.health -= damage
+				shotsHit += 1
+				print(shotsHit)
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
