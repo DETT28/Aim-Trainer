@@ -7,14 +7,14 @@ var spawn_range_y = Vector2(0.5, 3.5)
 # var spawn_range_z = Vector2(-10, 10)
 
 func _ready():
-	spawn_target(Vector3(0,1,0))
+	spawn_target(Vector3(0,1.7,-3))
 	
 func spawn_target_random():
 	var random_pos = Vector3(
 		randf_range(spawn_range_x.x, spawn_range_x.y),
 		randf_range(spawn_range_y.x, spawn_range_y.y),
 		-3
-	)
+)
 	spawn_target(random_pos)
 
 func spawn_target(pos):
