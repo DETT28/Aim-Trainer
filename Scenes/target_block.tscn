@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://83pmg135cse6"]
+
+[ext_resource type="Script" uid="uid://bj7pioqbk0c7w" path="res://Scripts/Target/target_block.gd" id="1_ejx3s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ejx3s"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_8o1l4"]
+sky_material = SubResource("ProceduralSkyMaterial_ejx3s")
+
+[sub_resource type="Environment" id="Environment_c2iur"]
+background_mode = 2
+sky = SubResource("Sky_8o1l4")
+tonemap_mode = 2
+glow_enabled = true
+glow_normalized = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ejx3s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8o1l4"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejx3s"]
+albedo_color = Color(0.704072, 0.310296, 0, 1)
+emission_enabled = true
+emission = Color(0.664289, 0.289209, 2.88785e-07, 1)
+emission_energy_multiplier = 5.38
+
+[node name="Target_Block" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_ejx3s")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c2iur")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_ejx3s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8o1l4")
+surface_material_override/0 = SubResource("StandardMaterial3D_ejx3s")

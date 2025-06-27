@@ -1,31 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://d35cwgdnqwrw5"]
+[gd_scene load_steps=2 format=3 uid="uid://cdj1ukkgm8jq5"]
 
-[ext_resource type="PackedScene" uid="uid://83pmg135cse6" path="res://Scenes/block.tscn" id="1_y8up4"]
+[ext_resource type="PackedScene" uid="uid://83pmg135cse6" path="res://Scenes/target_block.tscn" id="1_y8up4"]
 
-[node name="block_grid" type="Node3D"]
+[node name="Block_grid" type="Node3D"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 
 [node name="Block" parent="." instance=ExtResource("1_y8up4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.6, 0)
 
 [node name="Block2" parent="." instance=ExtResource("1_y8up4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="Block3" parent="." instance=ExtResource("1_y8up4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.6, 0)
 
 [node name="Block4" parent="." instance=ExtResource("1_y8up4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
 
 [node name="Block5" parent="." instance=ExtResource("1_y8up4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
 
 [node name="Block6" parent="." instance=ExtResource("1_y8up4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 
 [node name="Block7" parent="." instance=ExtResource("1_y8up4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.6, 0)
 
 [node name="Block8" parent="." instance=ExtResource("1_y8up4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 
 [node name="Block9" parent="." instance=ExtResource("1_y8up4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.6, 0)

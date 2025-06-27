@@ -1,34 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://ct0c01lqr7s8g"]
+[gd_scene load_steps=4 format=3 uid="uid://ct0c01lqr7s8g"]
 
-[ext_resource type="Script" uid="uid://c6esu4qp7tvto" path="res://Scripts/player.gd" id="1_7cdx0"]
-[ext_resource type="Script" uid="uid://cu0w3afp7y8qd" path="res://Scripts/reticle.gd" id="2_cvnsp"]
-[ext_resource type="Script" uid="uid://7dr0t0p2bjuh" path="res://Scripts/debug.gd" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://c6esu4qp7tvto" path="res://Scripts/Client/player.gd" id="1_7cdx0"]
+[ext_resource type="Script" uid="uid://cu0w3afp7y8qd" path="res://Scripts/Client/HUD UI/reticle.gd" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://7dr0t0p2bjuh" path="res://Scripts/Client/HUD UI/debug.gd" id="4_vgqql"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
-radius = 0.25
-height = 1.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_v0iea"]
-radius = 0.25
-height = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f60y1"]
-albedo_color = Color(0.0605303, 0.0605303, 0.0605303, 1)
-
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="Player" type="Node3D"]
 script = ExtResource("1_7cdx0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_f60y1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-mesh = SubResource("CapsuleMesh_v0iea")
-surface_material_override/0 = SubResource("StandardMaterial3D_f60y1")
 
 [node name="CameraController" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+current = true
 fov = 74.0
 
 [node name="AimCast" type="RayCast3D" parent="CameraController/Camera3D"]
